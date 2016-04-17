@@ -1,0 +1,81 @@
+﻿@using System.Security.Claims
+@{
+	ViewBag.Title = "Solutions";
+	Layout = "_LayoutLogged";
+}
+
+@section Scripts{
+	<script src="~/lib/angular/angular.min.js"></script>
+	<script src="~/js/app-cards.js"></script>
+	<script src="~/js/cardsController.js"></script>
+}
+<div class="container-fluid" ng-app="app-cards">
+	<div ng-controller="cardsController as vm">
+
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Keep It Solved</a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">Add new card<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li>
+									<div style="width: 750px;" class="col-sm-12">
+										<form novalidate name="newCardForm" ng-submit="vm.addCard()">
+											<div class="form-group">
+												<label for="question">Add new card</label>
+												<span style="display:block" ng-show="newCardForm.question.$error.required">Question is required</span>
+												<input class="form-control" type="text" placeholder="Problem" id="question" name="question" ng-model="vm.newCard.question" required />
+												<textarea class="form-control" rows="3" type="text" placeholder="Solution" id="answer" name="answer" ng-model="vm.newCard.answer"></textarea>
+												<input class="form-control" type="text" placeholder="Category" id="category" name="category" ng-model="vm.newCard.category" />
+												<input type="submit" value="Add" class="btn btn-success" ng-disabled="newCardForm.$invalid" />
+											</div>
+										</form>
+									</div>
+								</li>
+							</ul>
+						</li>
+					</ul>
+
+					<form class="navbar-form navbar-right" role="navigation" method="post" asp-controller="App" asp-action="Logout">
+						<input type="submit" value="Logout" class="btn btn-default" />
+					</form>
+					<div class="navbar-right">
+						<a href="#" class="navbar-brand">@User.GetUserName()</a>
+					</div>
+				</div>
+				</div>
+
+		</nav>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-3" ng-repeat="card in vm.cards" style="margin-bottom: 10px;">
+					<div class="panel panel-info">
+						<div class="panel-heading clearfix">
+							<h4 class="panel-title pull-left" >{{ card.question }}</h4>
+							<div class="btn-group pull-right">
+								<a href="#" class="btn btn-sm btn-primary">Manage</a>
+							</div>
+						</div>
+						<div class="panel-body">
+							{{ card.answer }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+	
+</div>
+

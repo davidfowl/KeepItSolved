@@ -1,0 +1,5 @@
+﻿{
+	"Data": {
+		"SolvedContextConnection": "Server=(localDb)\\ProjectsV12;Database=KisDb;Trusted_Connection=true;MultipleActiveResultSets=true;"
+	}
+}

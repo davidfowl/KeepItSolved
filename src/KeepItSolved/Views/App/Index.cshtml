@@ -1,0 +1,32 @@
+﻿@model KeepItSolved.ViewModels.LoginViewModel
+@{
+	ViewBag.Title = "Login";
+}
+@section Scripts{
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+<div class="container-fluid">
+	<div class="col-md-5 col-sm-12 text-center">
+		<form method="post" novalidate asp-controller="App" asp-action="Index">
+			<div class="bold" asp-validation-summary="ValidationSummary.ModelOnly"></div>
+			<div class="form-group">
+				<label asp-for="Login">Login</label>
+				<input asp-for="Login" class="form-control smaller-input" />
+				<b><span asp-validation-for="Login"></span></b>
+			</div>
+			<div class="form-group">
+				<label asp-for="Password">Password</label>
+				<input asp-for="Password" type="password" class="form-control smaller-input" />
+				<b><span asp-validation-for="Password"></span></b>
+			</div>
+			<input type="submit" class="btn btn-default" value="Login"/>
+		</form>
+		<a asp-controller="App" asp-action="Register" class="text-primary"><b>Don't have an account yet? Register!</b></a>
+	</div>
+	<div class="col-md-7 col-sm-12 text-center">
+		<h2>Try out demo version without logging in</h2>
+		<button id="btnLogin" class="btn btn-lg btn-success">Demo Preview</button>
+	</div>
+
+</div>	

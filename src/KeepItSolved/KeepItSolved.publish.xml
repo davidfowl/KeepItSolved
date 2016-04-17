@@ -1,0 +1,9 @@
+<publishData>
+  <publishProfile
+publishUrl="https://jandzban-001-site1.ctempurl.com:8172/msdeploy.axd"
+msdeploySite="jandzban-001-site1"
+destinationAppUrl="http://jandzban-001-site1.ctempurl.com/"
+profileName="Default Settings"
+publishMethod="MSDeploy"
+userName="ifc\jandzban-001" />
+</publishData>
