@@ -21,6 +21,12 @@
       "environmentVariables": {
         "Hosting:Environment": "Development"
       }
+    },
+    "kestrel": {
+      "commandName": "kestrel",
+      "environmentVariables": {
+        "hosting:environment": "Development"
+      }
     }
   }
 }
